@@ -67,10 +67,10 @@ The main objective of this presentation is to understand how conventional synchr
 ## 📊 Presentation
 
 **Canva PPT:**  
-[https://canva.link/g33vf5venuj7xd0]
+https://canva.link/g33vf5venuj7xd0
 
 **YouTube Video:**  
-[https://youtu.be/kngZSd6PgRA?si=71C4uPBoQhLUbKuU]
+https://youtu.be/kngZSd6PgRA?si=71C4uPBoQhLUbKuU
 
 ## 👨‍💻 Author
 
