@@ -1,4 +1,4 @@
-# ⚡ Synchronization of Solar Energy with the Grid Using Virtual Synchronous Generators
+# Explaination of synchronization and need of virtual synchronous generator
 
 ## 📌 Overview
 
