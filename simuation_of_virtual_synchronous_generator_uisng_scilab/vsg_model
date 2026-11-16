@@ -1,0 +1,48 @@
+// =====================================================
+// GRID FORMING INVERTER
+// VIRTUAL SYNCHRONOUS GENERATOR + BESS
+// =====================================================
+
+function [P_vsg_next, P_vsg_ref, Q_vsg_next, Q_vsg_ref] = ...
+    vsg_model(f_bus, V_bus, P_previous, Q_previous, dt)
+
+    // System parameters
+    f0 = 50;
+    V0 = 1.0;
+
+    // Active power controller
+    P0 = 40;             // Initial active power (kW)
+    Kp_bess = 300;       // Battery frequency droop
+
+    Pmax = 80;
+    Pmin = 0;
+
+    // Virtual inertia and response
+    T_power = 0.25;
+
+    // Frequency response
+    P_vsg_ref = P0 + Kp_bess*(f0-f_bus);
+
+    P_vsg_ref = min(Pmax, max(Pmin, P_vsg_ref));
+
+    // First-order battery/inverter response
+    P_vsg_next = P_previous + ...
+        (dt/T_power)*(P_vsg_ref-P_previous);
+
+    // Reactive power / voltage controller
+    Q0 = 10;
+    Kq = 100;
+
+    Qmax = 40;
+    Qmin = 0;
+
+    T_reactive = 0.2;
+
+    Q_vsg_ref = Q0 + Kq*(V0-V_bus);
+
+    Q_vsg_ref = min(Qmax, max(Qmin, Q_vsg_ref));
+
+    Q_vsg_next = Q_previous + ...
+        (dt/T_reactive)*(Q_vsg_ref-Q_previous);
+
+endfunction
